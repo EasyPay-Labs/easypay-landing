@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+  "name": "tech.appload.mcp/easypay",
+  "version": "0.3.0",
+  "title": "EasyPay",
+  "description": "EasyPay payments — create products, payment links, invoices and request payouts via natural language. Stripe, Mercury, crypto (USDT/USDC), T-Bank; USD/EUR/RUB/CRYPTO balances and payouts.",
+  "websiteUrl": "https://easypay.thenextgen.store",
+  "repository": {
+    "url": "https://github.com/EasyPay-Labs/easypay-skill",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "sse",
+      "url": "https://mcp.appload.tech/sse",
+      "supportedProtocolVersions": ["2025-06-18"],
+      "headers": [
+        {
+          "name": "X-Partner-Api-Key",
+          "description": "EasyPay partner API key. Obtain via @easypay_onboarding_bot in Telegram.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
