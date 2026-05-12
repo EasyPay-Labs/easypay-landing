@@ -52,6 +52,8 @@
     h3 { font-size: 1.375rem !important; line-height: 1.3 !important; font-weight: 600 !important; letter-spacing: -0.01em !important; }
     /* Hero highlights остаются цветовым акцентом, но в стиле gold-italic */
     .grad-text { color: #FFD480; font-style: italic; background: none; -webkit-background-clip: initial; background-clip: initial; }
+    /* На светлых .glass-карточках золотой курсив не читается — фирменный тёмный teal без курсива */
+    .glass .grad-text { color: var(--teal); font-style: normal; }
 
     /* Светлые «glass» карточки на teal-фоне (раньше были тёмные) */
     .glass {
@@ -145,6 +147,44 @@
       color: #fff; font-weight: 700;
       border: none;
       box-shadow: 0 2px 8px rgba(0,137,123,0.3);
+    }
+
+    /* Tabs: pure CSS (radio-based) — секция «Подключить» */
+    .tab-strip {
+      display: inline-flex; flex-wrap: wrap; gap: 6px;
+      padding: 6px; border-radius: 14px;
+      background: rgba(0,137,123,0.07);
+      border: 1px solid rgba(0,137,123,0.18);
+    }
+    .tab-strip label {
+      cursor: pointer;
+      padding: 9px 16px; border-radius: 10px;
+      font-size: 14px; font-weight: 600;
+      color: var(--text-secondary);
+      transition: background var(--ease), color var(--ease);
+      white-space: nowrap;
+    }
+    .tab-strip label:hover { color: var(--text-primary); }
+    .tab-input { position: absolute; opacity: 0; pointer-events: none; }
+    .tab-input:focus-visible + .tab-strip label[for] {
+      /* фокус-кольцо на активной вкладке — управляется ниже через :checked */
+    }
+    .tab-panel { display: none; }
+    /* Активная вкладка — фон + цвет (двойной триггер: :checked-sibling и .is-active для надёжности) */
+    #tab-bot:checked ~ .tab-strip label[for="tab-bot"],
+    #tab-agent:checked ~ .tab-strip label[for="tab-agent"],
+    .tab-strip label.is-active {
+      background: #fff;
+      color: var(--teal-deep);
+      box-shadow: 0 2px 10px rgba(0,50,45,0.10);
+    }
+    /* Видимость панелей */
+    #tab-bot:checked ~ .tab-panel[data-panel="bot"],
+    #tab-agent:checked ~ .tab-panel[data-panel="agent"] { display: block; }
+    /* Фокус-кольцо на текущей вкладке для доступности */
+    #tab-bot:focus-visible ~ .tab-strip label[for="tab-bot"],
+    #tab-agent:focus-visible ~ .tab-strip label[for="tab-agent"] {
+      outline: 2px solid var(--teal); outline-offset: 2px;
     }
 
     /* Большие аватары основателей */
@@ -292,7 +332,7 @@
         <a href="#founders" class="hover:text-white">Кто мы</a>
         <a href="#product" class="hover:text-white">Что делаем</a>
         <a href="#how" class="hover:text-white">Как работает</a>
-        <a href="#try" class="hover:text-white">Демо в боте</a>
+        <a href="#try" class="hover:text-white">Как подключить</a>
         <a href="#faq" class="hover:text-white">FAQ</a>
       </nav>
       <a href="https://t.me/easypay_onboarding_bot" class="btn-primary text-sm !py-2.5 !px-4">
@@ -711,61 +751,118 @@
     </div>
   </section>
 
-  <!-- TRY THE BOT -->
+  <!-- CONNECT (tabs: bot demo / AI-agent) -->
   <section id="try" class="relative">
     <div class="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
       <div class="glass rounded-3xl p-8 md:p-14 overflow-hidden relative">
         <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 0% 0%, rgba(0,137,123,.18), transparent 60%), radial-gradient(ellipse 50% 60% at 100% 100%, rgba(212,175,55,.10), transparent 60%);"></div>
 
-        <div class="relative grid md:grid-cols-12 gap-8 md:gap-12 items-start">
-          <div class="md:col-span-5">
-            <div class="chip mb-5">
-              <span class="dot"></span>
-              Бесплатное демо в Telegram
-            </div>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Попробуйте прямо сейчас — <span class="grad-text">бесплатно</span></h2>
-            <p class="mt-5 text-slate-300 leading-relaxed">В Telegram-боте можно самостоятельно пройти онбординг: настроить демо под свой бизнес, увидеть, как будет выглядеть платёжная страница, получить расчёт комиссий и попробовать тестовую оплату — как это будет видеть ваш клиент.</p>
+        <div class="relative">
+          <input type="radio" name="connect-tabs" id="tab-bot" class="tab-input" checked>
+          <input type="radio" name="connect-tabs" id="tab-agent" class="tab-input">
 
-            <div class="mt-7">
-              <a href="https://t.me/easypay_onboarding_bot" class="btn-primary">
-                Открыть бота в Telegram
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5 2.5 12l7 2 2 7L21.5 4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
+          <div class="tab-strip mb-8">
+            <label for="tab-bot">Демо в Telegram</label>
+            <label for="tab-agent">Если работаете с AI агентом</label>
+          </div>
 
-            <div class="mt-6 grid grid-cols-1 gap-2 text-sm text-slate-300">
-              <div class="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="#26A69A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Бесплатно — мы ничего не списываем
+          <div class="tab-panel" data-panel="bot">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+              <div class="md:col-span-5">
+                <div class="chip mb-5">
+                  <span class="dot"></span>
+                  Бесплатное демо в Telegram
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Попробуйте прямо сейчас — <span class="grad-text">бесплатно</span></h2>
+                <p class="mt-5 text-slate-300 leading-relaxed">В Telegram-боте можно самостоятельно пройти онбординг: настроить демо под свой бизнес, увидеть, как будет выглядеть платёжная страница, получить расчёт комиссий и попробовать тестовую оплату — как это будет видеть ваш клиент.</p>
+
+                <div class="mt-7">
+                  <a href="https://t.me/easypay_onboarding_bot" class="btn-primary">
+                    Открыть бота в Telegram
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5 2.5 12l7 2 2 7L21.5 4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                </div>
+
+                <div class="mt-6 grid grid-cols-1 gap-2 text-sm text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="#26A69A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Бесплатно — мы ничего не списываем
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="#26A69A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Без карты, без регистрации, без обязательств
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="#26A69A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    5 минут на демо, дальше — по желанию
+                  </div>
+                </div>
               </div>
-              <div class="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="#26A69A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Без карты, без регистрации, без обязательств
-              </div>
-              <div class="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="#26A69A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                5 минут на демо, дальше — по желанию
+
+              <div class="md:col-span-7">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">1</span><div class="font-semibold">Платёжная страница под ваш бизнес</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Бот соберёт минимум данных и покажет, как платёжная форма будет выглядеть для ваших клиентов — с вашим названием и нужной валютой.</p>
+                  </div>
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">2</span><div class="font-semibold">Расчёт комиссий</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Покажем, сколько вы будете получать на руки в зависимости от способа оплаты, географии клиентов и валюты выплат.</p>
+                  </div>
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">3</span><div class="font-semibold">Тестовый платёж</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Сгенерируем тестовую ссылку — пройдёте оплату как клиент, увидите квитанцию и поймёте весь сценарий до запуска.</p>
+                  </div>
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">4</span><div class="font-semibold">Личный ответ от нас</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Если останутся вопросы — мы с Андреем уже на той стороне. Никакой первой линии и автоответов.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="md:col-span-7">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="glass rounded-2xl p-5">
-                <div class="flex items-center gap-3"><span class="num-badge">1</span><div class="font-semibold">Платёжная страница под ваш бизнес</div></div>
-                <p class="mt-3 text-sm text-slate-400 leading-relaxed">Бот соберёт минимум данных и покажет, как платёжная форма будет выглядеть для ваших клиентов — с вашим названием и нужной валютой.</p>
+          <div class="tab-panel" data-panel="agent">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+              <div class="md:col-span-5">
+                <div class="chip mb-5">
+                  <span class="dot"></span>
+                  MCP сервер
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Подключите оплату к своему продукту — просто попросив <span class="grad-text">AI агента</span></h2>
+                <p class="mt-5 text-slate-300 leading-relaxed">Курс, SaaS или консалтинг готовы — осталось подключить оплату. Не Stripe-онбординг, не SDK, не часы возни. Скажите своему AI агенту в Claude Code, Cursor, Codex или Gemini CLI: «Создай платёжную ссылку на $299 за мой курс» — он вызовет EasyPay и через минуту вернёт готовую ссылку. Вставьте её на лендинг, в email-рассылку, в Telegram или описание YouTube-ролика — деньги придут на ваш счёт.</p>
+
+                <div class="mt-7 flex flex-wrap items-center gap-4">
+                  <a href="https://t.me/easypay_onboarding_bot" class="btn-primary">
+                    Получить ключ в Telegram-боте
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5 2.5 12l7 2 2 7L21.5 4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                  <a href="https://github.com/EasyPay-Labs/easypay-skill" class="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center gap-1.5">
+                    Инструкция для Claude, Cursor, Codex, Gemini
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                </div>
               </div>
-              <div class="glass rounded-2xl p-5">
-                <div class="flex items-center gap-3"><span class="num-badge">2</span><div class="font-semibold">Расчёт комиссий</div></div>
-                <p class="mt-3 text-sm text-slate-400 leading-relaxed">Покажем, сколько вы будете получать на руки в зависимости от способа оплаты, географии клиентов и валюты выплат.</p>
-              </div>
-              <div class="glass rounded-2xl p-5">
-                <div class="flex items-center gap-3"><span class="num-badge">3</span><div class="font-semibold">Тестовый платёж</div></div>
-                <p class="mt-3 text-sm text-slate-400 leading-relaxed">Сгенерируем тестовую ссылку — пройдёте оплату как клиент, увидите квитанцию и поймёте весь сценарий до запуска.</p>
-              </div>
-              <div class="glass rounded-2xl p-5">
-                <div class="flex items-center gap-3"><span class="num-badge">4</span><div class="font-semibold">Личный ответ от нас</div></div>
-                <p class="mt-3 text-sm text-slate-400 leading-relaxed">Если останутся вопросы — мы с Андреем уже на той стороне. Никакой первой линии и автоответов.</p>
+
+              <div class="md:col-span-7">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">1</span><div class="font-semibold">5 минут, не 5 дней</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Создать продукт и платёжную ссылку через агента — быстрее, чем разобраться в Stripe Checkout SDK.</p>
+                  </div>
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">2</span><div class="font-semibold">Работает с тем, что у вас уже есть</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Платёжная ссылка вставляется куда угодно: ваш лендинг курса, e-mail-рассылка, чат в Telegram, описание ролика на YouTube.</p>
+                  </div>
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">3</span><div class="font-semibold">Продолжение того, как вы уже работаете</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Лендинг собирали в Cursor, тексты писали в Claude, иконки рисовали в Midjourney, видео делали в Veo. С EasyPay MCP оплата встаёт в тот же ряд — обычная задача агенту.</p>
+                  </div>
+                  <div class="glass rounded-2xl p-5">
+                    <div class="flex items-center gap-3"><span class="num-badge">4</span><div class="font-semibold">Мы сами на этом построены</div></div>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Андрей и Антон каждый день работают через Claude и Codex. EasyPay MCP мы делаем не как маркетинговую фишку, а как собственный инструмент: первые пользователи — мы сами.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -878,6 +975,23 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Sync .is-active class on tab labels with checked radio — резервный путь для браузеров,
+    // где :checked + sibling-селектор не вызывает style recalc на labels (наблюдалось в headless Chromium).
+    (function () {
+      var inputs = document.querySelectorAll('input[name="connect-tabs"]');
+      var labels = document.querySelectorAll('.tab-strip label');
+      function sync() {
+        labels.forEach(function (l) {
+          var input = document.getElementById(l.htmlFor);
+          l.classList.toggle('is-active', !!(input && input.checked));
+        });
+      }
+      inputs.forEach(function (i) { i.addEventListener('change', sync); });
+      sync();
+    })();
+  </script>
 
 </body>
 </html>
