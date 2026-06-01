@@ -1,0 +1,60 @@
+<!--
+  EasyPay · блок «Спросить ИИ: подойдёт ли это вам»
+  Куда вставлять: в index.html перед секцией <!-- FAQ --> (после секции #try).
+  Что добавить рядом: один <script> (см. низ файла), один раз на страницу.
+
+  Сегмент под конкретную страницу/аудиторию задаётся атрибутом
+  data-agent-segment: "default" | "saas" | "stripe-ban" | "infobiz" | "ecom".
+-->
+<section id="ai-consultant" class="relative">
+  <div class="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
+    <div
+      data-agent-handoff
+      data-agent-url="https://easypay.thenextgen.store/"
+      data-agent-segment="default"
+      class="glass rounded-3xl p-8 md:p-12 overflow-hidden relative">
+      <div class="absolute inset-0 pointer-events-none"
+           style="background: radial-gradient(ellipse 55% 70% at 100% 0%, rgba(0,137,123,.16), transparent 60%), radial-gradient(ellipse 50% 60% at 0% 100%, rgba(212,175,55,.10), transparent 60%);"></div>
+
+      <div class="relative md:flex md:items-center md:justify-between gap-10">
+        <div class="md:max-w-xl">
+          <div class="chip mb-5">
+            <span class="dot"></span>
+            ИИ-консультант · честно, за 2 минуты
+          </div>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
+            Не уверены, что EasyPay — ваш случай? <span class="grad-text">Спросите ИИ</span>
+          </h2>
+          <p class="mt-5 text-slate-300 leading-relaxed">
+            Откроем ChatGPT или Claude с готовым разбором. ИИ расспросит про вашу ситуацию —
+            откуда платежи, какой объём, что ломается сейчас — и честно скажет, подходит ли
+            EasyPay. Если нет — так и скажет. Без регистрации и без карты.
+          </p>
+        </div>
+
+        <div class="mt-8 md:mt-0 flex flex-col gap-3 md:w-72 shrink-0">
+          <a href="#" data-agent-target="claude" target="_blank" rel="noopener noreferrer"
+             class="btn-primary" style="justify-content:center;"
+             aria-label="Открыть готовый разбор в Claude">
+            Спросить Claude
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" data-agent-target="chatgpt" target="_blank" rel="noopener noreferrer"
+             class="btn-secondary" style="justify-content:center;"
+             aria-label="Открыть готовый разбор в ChatGPT">
+            Спросить ChatGPT
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" data-agent-copy role="button"
+             class="btn-secondary" style="justify-content:center;"
+             aria-label="Скопировать готовый промпт">
+            <span data-agent-copy-label>Скопировать промпт</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Подключить один раз (рядом с остальными скриптами перед </body>): -->
+<!-- <script src="/assets/agent-handoff.js" defer></script> -->
