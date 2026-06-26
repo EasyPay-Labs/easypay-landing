@@ -154,10 +154,15 @@ document.getElementById('logos').innerHTML=logos.map(([f,l,d])=>`
 
 // banners per lang
 const banners=[
- ['x-header','X / Twitter · 1500×500'],['linkedin-banner','LinkedIn · 1584×396'],
- ['youtube-channel','YouTube · 2560×1440'],['telegram-cover','Telegram · 1280×640'],
- ['wide-1200x600','Wide · 1200×600'],['wide-1920x1080','Wide · 1920×1080'],
- ['strip-1600x320','Лента / Shorts · 1600×320'],
+ ['strip','Лента / Shorts · 1600×320'],
+ ['wide-v0','Горизонтальный · база · 1600×900'],
+ ['wide-v1','Горизонтальный · +CTA, доверие, глагол · 1600×900'],
+ ['wide-v2','Горизонтальный · +возможности · 1600×900'],
+ ['wide-v3','Горизонтальный · +MCP / AI-native · 1600×900'],
+ ['long-v0','Вертикальный · база · 1080×1350'],
+ ['long-v1','Вертикальный · +CTA, доверие, глагол · 1080×1350'],
+ ['long-v2','Вертикальный · +возможности · 1080×1350'],
+ ['long-v3','Вертикальный · +MCP / AI-native · 1080×1350'],
 ];
 function bannerCards(lang){return banners.map(([f,l])=>`
  <div class="card" data-lang="${lang}"><div class="thumb banner"><img src="${A}banners/png/${f}-${lang}.png" alt="${l}"></div>
