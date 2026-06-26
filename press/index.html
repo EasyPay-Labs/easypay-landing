@@ -73,6 +73,23 @@
     [data-lang=en]{display:none} body.en [data-lang=en]{display:block} body.en [data-lang=ru]{display:none}
     footer{padding:36px 0 60px;color:var(--sub);font-size:.9rem;border-top:1px solid var(--line)}
     footer a{color:var(--amber);text-decoration:none;font-weight:600}
+    .cell{cursor:zoom-in}
+    .lb{position:fixed;inset:0;z-index:100;background:rgba(8,40,47,.9);display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:40px}
+    .lb.on{display:flex;animation:lbfade .18s ease}
+    @keyframes lbfade{from{opacity:0}to{opacity:1}}
+    .lb-close{position:absolute;top:18px;right:20px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    .lb-close:hover{background:rgba(255,255,255,.26)}
+    .lb-card{display:flex;align-items:center;justify-content:center;border-radius:8px;max-width:92vw;max-height:78vh;overflow:hidden}
+    .lb-card.light{background:#fff;padding:clamp(20px,5vw,60px)}
+    .lb-card.dark{background:var(--teal-deep);padding:clamp(20px,5vw,60px)}
+    .lb-card.beige{background:var(--beige-cell);padding:clamp(20px,5vw,60px)}
+    .lb-card.banner{background:none;padding:0}
+    .lb-card img{max-width:100%;max-height:74vh;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px}
+    .lb-foot{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .lb-name{font-size:.85rem;color:rgba(255,255,255,.72)}
+    .lb-dl{display:flex;gap:10px}
+    .lb-dl a{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--teal-deep);font-weight:700;font-size:.9rem;padding:10px 22px;border-radius:8px;text-decoration:none}
+    .lb-dl a:hover{background:var(--amber);color:#fff}
   </style>
 </head>
 <body>
@@ -131,14 +148,24 @@
   </footer>
 </div>
 
+<div id="lb" class="lb" aria-hidden="true">
+  <button class="lb-close" aria-label="Закрыть" onclick="closeLB()">×</button>
+  <div class="lb-card light"><img id="lb-img" alt=""></div>
+  <div class="lb-foot"><div class="lb-name" id="lb-name"></div>
+    <div class="lb-dl"><a id="lb-svg" download>SVG</a><a id="lb-png" download>PNG</a></div></div>
+</div>
+
 <script>
 function setLang(l){document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.getElementById('ru').classList.toggle('on',l==='ru');document.getElementById('en').classList.toggle('on',l==='en')}
 const A='assets/';
 function dl(svg,png){let h='<span class="dl">';if(svg)h+=`<a href="${A}${svg}" download>SVG</a>`;if(png)h+=`<a href="${A}${png}" download>PNG</a>`;return h+'</span>'}
 function item(cellClass,img,name,svg,png,lang){
   const dataLang = lang?` data-lang="${lang}"`:'';
-  return `<div class="it"${dataLang}><div class="cell ${cellClass}"><img src="${A}${img}" alt=""></div>`+
-         `<div class="cap"><span class="nm">${name}</span>${dl(svg,png)}</div></div>`;
+  const theme = cellClass.split(' ')[0];
+  const open = `openLB('${svg}','${png}',this,'${theme}')`;
+  return `<div class="it"${dataLang}>`+
+    `<div class="cell ${cellClass}" role="button" tabindex="0" data-nm="${name}" onclick="${open}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${open}}"><img src="${A}${img}" alt="${name}"></div>`+
+    `<div class="cap"><span class="nm">${name}</span>${dl(svg,png)}</div></div>`;
 }
 
 // logos: [file, label, cell]
@@ -191,6 +218,21 @@ const copy={
 function copyCards(lang){return copy[lang].map(([t,txt])=>
  `<div class="copybox" data-lang="${lang}"><button class="copybtn" onclick="navigator.clipboard.writeText(this.nextElementSibling.nextElementSibling.textContent.trim());this.textContent='✓'">copy</button><h3>${t}</h3><p>${txt}</p></div>`).join('')}
 document.getElementById('copy').innerHTML=copyCards('ru')+copyCards('en');
+
+// lightbox
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbName=document.getElementById('lb-name'),
+      lbCard=lb.querySelector('.lb-card'),lbSvg=document.getElementById('lb-svg'),lbPng=document.getElementById('lb-png');
+function openLB(svg,png,cell,theme){
+  lbImg.src=A+svg;                       // SVG = crisp at any size
+  lbCard.className='lb-card '+theme;
+  lbName.textContent=cell.getAttribute('data-nm')||'';
+  lbSvg.href=A+svg; lbPng.href=A+png;
+  lb.classList.add('on'); lb.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});               // click dimmed area closes
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});    // Esc closes
 </script>
 </body>
 </html>
