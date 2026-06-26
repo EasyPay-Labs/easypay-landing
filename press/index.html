@@ -10,80 +10,80 @@
   <meta property="og:description" content="Логотипы, баннеры и описания EasyPay для прессы и партнёров." />
   <meta property="og:image" content="https://easypay.thenextgen.store/press/assets/social/png/og-image-ru.png" />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/logos/easypay-favicon.svg" />
+  <link rel="icon" href="assets/logos/easypay-app-icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --teal:#00897B; --teal-deep:#0B3B45; --green:#4CAF50; --gold:#D4AF37;
-      --navy:#1E2A3A; --surface:#fff; --text:#1B2B30; --text2:#5A6B70;
-      --bg:linear-gradient(165deg,#0A3039 0%,#0B4B45 35%,#00897B 100%);
-      color-scheme:dark;
+      --beige:#F0EEE6; --beige-cell:#EAEFEF; --ink:#1B2B30; --sub:#5A6B70;
+      --teal:#00897B; --teal-deep:#0B3B45; --navy:#1E2A3A; --amber:#F8A13A;
+      --line:rgba(11,59,69,.12);
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{font-family:'DM Sans',system-ui,Segoe UI,Roboto,sans-serif}
-    body{background:var(--bg);background-attachment:fixed;color:#fff;-webkit-font-smoothing:antialiased;line-height:1.5}
-    ::selection{background:rgba(212,175,55,.35);color:#fff}
+    body{background:var(--beige);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+    ::selection{background:rgba(248,161,58,.30);color:var(--ink)}
     a{color:inherit}
     h1,h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;letter-spacing:-.02em}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-    header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(10,48,57,.55);border-bottom:1px solid rgba(255,255,255,.08)}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+    header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(240,238,230,.8);border-bottom:1px solid var(--line)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
-    .brand img{height:28px;width:auto}
-    .langtog{display:flex;gap:2px;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
-    .langtog button{border:0;background:none;color:rgba(255,255,255,.7);font:inherit;font-size:13px;font-weight:600;padding:5px 14px;border-radius:999px;cursor:pointer}
-    .langtog button.on{background:var(--gold);color:var(--navy)}
-    .hero{padding:64px 0 40px;text-align:center}
-    .hero h1{font-size:clamp(2.2rem,4vw+1rem,3.4rem);line-height:1.06}
-    .hero p{color:rgba(255,255,255,.85);max-width:620px;margin:18px auto 0;font-size:1.05rem}
-    .cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:linear-gradient(135deg,#00897B,#4CAF50);color:#fff;font-weight:700;padding:15px 28px;border-radius:14px;text-decoration:none;box-shadow:0 8px 24px rgba(0,137,123,.4)}
-    .cta.ghost{background:rgba(255,255,255,.08);box-shadow:none;border:1px solid rgba(255,255,255,.18);font-weight:600;margin-left:10px}
-    section{padding:40px 0;border-top:1px solid rgba(255,255,255,.08)}
-    .sec-h{font-size:1.6rem;margin-bottom:6px}
-    .sec-sub{color:rgba(255,255,255,.7);margin-bottom:24px}
-    .grid{display:grid;gap:18px}
+    .brand img{height:26px;width:auto;display:block}
+    .langtog{display:flex;gap:2px;background:rgba(11,59,69,.07);border-radius:999px;padding:3px}
+    .langtog button{border:0;background:none;color:var(--sub);font:inherit;font-size:13px;font-weight:600;padding:5px 14px;border-radius:999px;cursor:pointer}
+    .langtog button.on{background:var(--amber);color:#fff}
+    .hero{padding:60px 0 36px}
+    .hero h1{font-size:clamp(2.2rem,4vw+1rem,3.3rem);line-height:1.06;max-width:780px}
+    .hero h1 em{color:var(--amber);font-style:normal}
+    .hero p{color:var(--sub);max-width:600px;margin:16px 0 0;font-size:1.05rem}
+    .cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:var(--teal-deep);color:#fff;font-weight:700;padding:14px 26px;border-radius:8px;text-decoration:none}
+    .cta.ghost{background:none;color:var(--ink);border:1px solid var(--line);font-weight:600;margin-left:8px}
+    section{padding:36px 0;border-top:1px solid var(--line)}
+    .sec-h{font-size:1.5rem;margin-bottom:4px}
+    .sec-sub{color:var(--sub);margin-bottom:24px;font-size:.95rem;max-width:680px}
+    .grid{display:grid;gap:28px 22px}
     .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
-    @media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
-    .card{background:var(--surface);color:var(--text);border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,30,25,.18);display:flex;flex-direction:column}
-    .card.dark{background:var(--teal-deep);color:#fff}
-    .thumb{display:flex;align-items:center;justify-content:center;padding:26px;height:180px;background:repeating-conic-gradient(#f3f6f6 0% 25%,#fff 0% 50%) 50%/22px 22px}
-    .card.dark .thumb{background:linear-gradient(165deg,#0A3039,#00897B)}
-    .thumb img{max-width:100%;max-height:128px;width:auto;height:auto;object-fit:contain}
-    .thumb.banner{height:220px;padding:16px;background:#0A3039}
-    .thumb.banner img{max-width:100%;max-height:100%;width:auto;object-fit:contain;border-radius:6px}
-    .meta{margin-top:auto;padding:14px 16px;border-top:1px solid var(--border,rgba(0,50,45,.08));display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .card.dark .meta{border-top-color:rgba(255,255,255,.12)}
-    .meta .nm{font-weight:600;font-size:.92rem}
-    .meta .dl{display:flex;gap:6px}
-    .dl a{font-size:.78rem;font-weight:600;text-decoration:none;padding:5px 10px;border-radius:8px;background:rgba(0,137,123,.12);color:var(--teal)}
-    .card.dark .dl a{background:rgba(255,255,255,.16);color:#fff}
+    @media(max-width:820px){.g3{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
+    /* square card cell — no rounded corners, asset centered; caption sits on beige below */
+    .cell{border-radius:4px;display:flex;align-items:center;justify-content:center;height:190px;padding:26px;box-shadow:0 6px 24px rgba(11,59,69,.10);overflow:hidden}
+    .cell.light{background:#fff}
+    .cell.dark{background:var(--teal-deep)}
+    .cell.beige{background:var(--beige-cell)}
+    .cell img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+    .cell.banner{height:240px;padding:16px;background:var(--beige);box-shadow:none}
+    .cell.banner img{border-radius:4px;box-shadow:0 8px 26px rgba(11,59,69,.16)}
+    .cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 2px 0}
+    .cap .nm{font-weight:600;font-size:.9rem;color:var(--ink)}
+    .cap .nm small{display:block;font-weight:500;color:var(--sub);font-size:.8rem;margin-top:1px}
+    .dl{display:flex;gap:6px;flex:none}
+    .dl a{font-size:.74rem;font-weight:700;letter-spacing:.02em;text-decoration:none;padding:4px 9px;border-radius:6px;background:rgba(11,59,69,.06);color:var(--teal-deep)}
+    .dl a:hover{background:rgba(248,161,58,.18);color:var(--amber)}
     .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-    .sw{border-radius:12px;padding:16px;height:96px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;border:1px solid rgba(255,255,255,.12);font-weight:600;font-size:.85rem}
-    .sw small{display:block;opacity:.85;font-weight:500;font-family:monospace}
-    .copybox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px;position:relative}
-    .copybox h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:8px}
-    .copybox p{color:rgba(255,255,255,.92)}
-    .copybtn{position:absolute;top:14px;right:14px;border:0;background:rgba(255,255,255,.14);color:#fff;font:inherit;font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:8px;cursor:pointer}
+    .sw{border-radius:4px;padding:14px;height:90px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;font-weight:600;font-size:.85rem;box-shadow:0 4px 16px rgba(11,59,69,.10)}
+    .sw small{display:block;opacity:.85;font-weight:500;font-family:ui-monospace,monospace}
+    .copybox{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px;position:relative;box-shadow:0 6px 24px rgba(11,59,69,.06)}
+    .copybox h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:8px}
+    .copybox p{color:var(--ink)}
+    .copybtn{position:absolute;top:14px;right:14px;border:0;background:rgba(11,59,69,.08);color:var(--ink);font:inherit;font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:6px;cursor:pointer}
     .lang-en{display:none}
     body.en .lang-ru{display:none} body.en .lang-en{display:block}
-    body.en span.lang-ru{display:none} body.en span.lang-en{display:inline}
-    span.lang-en{display:none}
-    [data-lang=en]{display:none} body.en [data-lang=en]{display:flex} body.en [data-lang=ru]{display:none}
-    footer{padding:40px 0 64px;color:rgba(255,255,255,.65);font-size:.9rem;border-top:1px solid rgba(255,255,255,.08)}
-    footer a{color:var(--gold);text-decoration:none}
+    body.en span.lang-ru{display:none} body.en span.lang-en{display:inline} span.lang-en{display:none}
+    [data-lang=en]{display:none} body.en [data-lang=en]{display:block} body.en [data-lang=ru]{display:none}
+    footer{padding:36px 0 60px;color:var(--sub);font-size:.9rem;border-top:1px solid var(--line)}
+    footer a{color:var(--amber);text-decoration:none;font-weight:600}
   </style>
 </head>
 <body>
 <header><div class="wrap nav">
-  <a class="brand" href="https://easypay.thenextgen.store/"><img src="assets/logos/easypay-lockup-h-white.svg" alt="EasyPay" style="height:26px"></a>
+  <a class="brand" href="https://easypay.thenextgen.store/"><img src="assets/logos/easypay-lockup-signature-light.svg" alt="EasyPay"></a>
   <div class="langtog"><button id="ru" class="on" onclick="setLang('ru')">RU</button><button id="en" onclick="setLang('en')">EN</button></div>
 </div></header>
 
 <div class="wrap">
   <div class="hero">
-    <h1><span class="lang-ru">Пресс-кит EasyPay</span><span class="lang-en">EasyPay Press Kit</span></h1>
+    <h1><span class="lang-ru">Пресс-кит <em>EasyPay</em></span><span class="lang-en">EasyPay <em>Press Kit</em></span></h1>
     <p>
       <span class="lang-ru">Логотипы, баннеры и описания для статей, презентаций и материалов о нас. Берите и вставляйте — на русском и английском.</span>
       <span class="lang-en">Logos, banners and copy for articles, decks and materials about us. Grab and drop in — in Russian and English.</span>
@@ -92,39 +92,34 @@
       <a class="cta" href="easypay-press-kit.zip" download>
         <span class="lang-ru">Скачать весь кит (.zip)</span><span class="lang-en">Download full kit (.zip)</span>
       </a>
-      <a class="cta ghost" href="https://easypay.thenextgen.store/">EasyPay.thenextgen.store</a>
+      <a class="cta ghost" href="https://easypay.thenextgen.store/">easypay.thenextgen.store</a>
     </div>
   </div>
 
-  <!-- LOGOS -->
   <section>
     <h2 class="sec-h"><span class="lang-ru">Логотипы</span><span class="lang-en">Logos</span></h2>
-    <p class="sec-sub"><span class="lang-ru">SVG для веба, PNG — если нет шрифтов DM Sans / DM Serif.</span><span class="lang-en">SVG for web, PNG if DM Sans / DM Serif aren't installed.</span></p>
+    <p class="sec-sub"><span class="lang-ru">Три сочетания и нужные формы. Знак несёт акцент (амбер / navy / белый), слово <b>EasyPay</b> всегда нейтральное — амбером не красим.</span><span class="lang-en">Three combinations and the needed forms. The mark carries the accent (amber / navy / white); the <b>EasyPay</b> wordmark stays neutral — never amber.</span></p>
     <div class="grid g3" id="logos"></div>
   </section>
 
-  <!-- BANNERS -->
   <section>
-    <h2 class="sec-h"><span class="lang-ru">Баннеры и обложки</span><span class="lang-en">Banners & covers</span></h2>
-    <p class="sec-sub"><span class="lang-ru">Готовые размеры для соцсетей и материалов.</span><span class="lang-en">Ready sizes for social and materials.</span></p>
+    <h2 class="sec-h"><span class="lang-ru">Баннеры</span><span class="lang-en">Banners</span></h2>
+    <p class="sec-sub"><span class="lang-ru">Лента, горизонтальный и вертикальный — по 4 варианта насыщенности.</span><span class="lang-en">Strip, horizontal and vertical — 4 richness variants each.</span></p>
     <div class="grid g2" id="banners"></div>
   </section>
 
-  <!-- BADGES -->
   <section>
     <h2 class="sec-h"><span class="lang-ru">Бейдж «Принимает платежи через EasyPay»</span><span class="lang-en">"Accepts payments via EasyPay" badge</span></h2>
     <p class="sec-sub"><span class="lang-ru">Для сайтов и материалов партнёров.</span><span class="lang-en">For partner sites and materials.</span></p>
     <div class="grid g2" id="badges"></div>
   </section>
 
-  <!-- COLORS -->
   <section>
     <h2 class="sec-h"><span class="lang-ru">Цвета</span><span class="lang-en">Colors</span></h2>
     <p class="sec-sub"><span class="lang-ru">Клик — скопировать HEX. Шрифты: DM Serif Display + DM Sans.</span><span class="lang-en">Click to copy HEX. Fonts: DM Serif Display + DM Sans.</span></p>
     <div class="swatches" id="colors"></div>
   </section>
 
-  <!-- BOILERPLATE -->
   <section>
     <h2 class="sec-h"><span class="lang-ru">Описания</span><span class="lang-en">Boilerplate</span></h2>
     <p class="sec-sub"><span class="lang-ru">Скопируйте подходящую длину.</span><span class="lang-en">Copy whichever length fits.</span></p>
@@ -132,58 +127,59 @@
   </section>
 
   <footer>
-    <p><span class="lang-ru"><strong>EasyPay</strong> и логотип — собственность Pixel Rainbow Inc. (США). Используйте ассеты без изменений (не растягивать, не перекрашивать). Вопросы — </span><span class="lang-en"><strong>EasyPay</strong> and the logo are property of Pixel Rainbow Inc. (USA). Use the assets unmodified (no stretching or recoloring). Questions — </span><a href="https://t.me/andre_erokhin">@andre_erokhin</a>.</p>
+    <p><span class="lang-ru"><strong>EasyPay</strong> и логотип — собственность Pixel Rainbow Inc. (США). Используйте ассеты без изменений. Вопросы — </span><span class="lang-en"><strong>EasyPay</strong> and the logo are property of Pixel Rainbow Inc. (USA). Use the assets unmodified. Questions — </span><a href="https://t.me/andre_erokhin">@andre_erokhin</a>.</p>
   </footer>
 </div>
 
 <script>
 function setLang(l){document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.getElementById('ru').classList.toggle('on',l==='ru');document.getElementById('en').classList.toggle('on',l==='en')}
-
 const A='assets/';
 function dl(svg,png){let h='<span class="dl">';if(svg)h+=`<a href="${A}${svg}" download>SVG</a>`;if(png)h+=`<a href="${A}${png}" download>PNG</a>`;return h+'</span>'}
+function item(cellClass,img,name,svg,png,lang){
+  const dataLang = lang?` data-lang="${lang}"`:'';
+  return `<div class="it"${dataLang}><div class="cell ${cellClass}"><img src="${A}${img}" alt=""></div>`+
+         `<div class="cap"><span class="nm">${name}</span>${dl(svg,png)}</div></div>`;
+}
 
-// logos: [file(no ext, under logos/), label, dark?]
+// logos: [file, label, cell]
 const logos=[
- ['easypay-lockup-h','Lockup',false],['easypay-lockup-h-white','Lockup · white',true],
- ['easypay-mark','Mark',false],['easypay-mark-white','Mark · white',true],['easypay-mark-teal','Mark · teal',false],
- ['easypay-favicon','App icon',true],['easypay-lockup-v','Lockup · vertical',false],['easypay-lockup-v-white','Lockup · vertical white',true],
+ ['easypay-lockup-signature','Signature · основной','dark'],
+ ['easypay-lockup-signature-light','Signature · на светлом','light'],
+ ['easypay-lockup-ink','Ink · на светлом','light'],
+ ['easypay-lockup-reverse','Reverse · на тёмном','dark'],
+ ['easypay-lockup-vertical','Вертикальный','dark'],
+ ['easypay-app-icon','App icon','beige'],
+ ['easypay-mark-amber','Знак · амбер','dark'],
+ ['easypay-mark','Знак · navy','light'],
+ ['easypay-mark-white','Знак · white','dark'],
 ];
-document.getElementById('logos').innerHTML=logos.map(([f,l,d])=>`
- <div class="card${d?' dark':''}"><div class="thumb"><img src="${A}logos/${f}.svg" alt="${l}"></div>
- <div class="meta"><span class="nm">${l}</span>${dl('logos/'+f+'.svg','logos/png/'+f+'.png')}</div></div>`).join('');
+document.getElementById('logos').innerHTML=logos.map(([f,l,c])=>
+ item(c,`logos/${f}.svg`,l,`logos/${f}.svg`,`logos/png/${f}.png`)).join('');
 
-// banners per lang
+// banners: [file, label]
 const banners=[
  ['strip','Лента / Shorts · 1600×320'],
- ['wide-v0','Горизонтальный · база · 1600×900'],
- ['wide-v1','Горизонтальный · +CTA, доверие, глагол · 1600×900'],
- ['wide-v2','Горизонтальный · +возможности · 1600×900'],
- ['wide-v3','Горизонтальный · +MCP / AI-native · 1600×900'],
- ['long-v0','Вертикальный · база · 1080×1350'],
- ['long-v1','Вертикальный · +CTA, доверие, глагол · 1080×1350'],
- ['long-v2','Вертикальный · +возможности · 1080×1350'],
- ['long-v3','Вертикальный · +MCP / AI-native · 1080×1350'],
+ ['wide-v0','Горизонтальный · база'],['wide-v1','Горизонтальный · +CTA, доверие'],
+ ['wide-v2','Горизонтальный · +возможности'],['wide-v3','Горизонтальный · +MCP / AI-native'],
+ ['long-v0','Вертикальный · база'],['long-v1','Вертикальный · +CTA, доверие'],
+ ['long-v2','Вертикальный · +возможности'],['long-v3','Вертикальный · +MCP / AI-native'],
 ];
-function bannerCards(lang){return banners.map(([f,l])=>`
- <div class="card" data-lang="${lang}"><div class="thumb banner"><img src="${A}banners/png/${f}-${lang}.png" alt="${l}"></div>
- <div class="meta"><span class="nm">${l}</span>${dl('banners/'+f+'-'+lang+'.svg','banners/png/'+f+'-'+lang+'.png')}</div></div>`).join('')}
-document.getElementById('banners').innerHTML=bannerCards('ru')+bannerCards('en');
-// OG into banners section too
-['ru','en'].forEach(lang=>{document.getElementById('banners').insertAdjacentHTML('beforeend',`
- <div class="card" data-lang="${lang}"><div class="thumb banner"><img src="${A}social/png/og-image-${lang}.png" alt="OG"></div>
- <div class="meta"><span class="nm">Open Graph · 1200×630</span>${dl('social/og-image-'+lang+'.svg','social/png/og-image-'+lang+'.png')}</div></div>`)});
+function bannerCards(lang){return banners.map(([f,l])=>
+ item('banner',`banners/png/${f}-${lang}.png`,l,`banners/${f}-${lang}.svg`,`banners/png/${f}-${lang}.png`,lang)).join('')}
+let bh=bannerCards('ru')+bannerCards('en');
+['ru','en'].forEach(lang=>{bh+=item('banner',`social/png/og-image-${lang}.png`,'Open Graph · 1200×630',`social/og-image-${lang}.svg`,`social/png/og-image-${lang}.png`,lang)});
+document.getElementById('banners').innerHTML=bh;
 
-// badges
-const badges=[['light','Light'],['dark','Dark']];
-function badgeCards(lang){return badges.map(([t,l])=>`
- <div class="card${t==='dark'?' dark':''}" data-lang="${lang}"><div class="thumb"><img src="${A}badges/png/powered-by-easypay-${t}-${lang}.png" alt="${l}" style="max-height:64px"></div>
- <div class="meta"><span class="nm">${l}</span>${dl('badges/powered-by-easypay-'+t+'-'+lang+'.svg','badges/png/powered-by-easypay-'+t+'-'+lang+'.png')}</div></div>`).join('')}
+// badges: light → beige cell, dark → dark cell
+const badges=[['light','Light','beige'],['dark','Dark','dark']];
+function badgeCards(lang){return badges.map(([t,l,c])=>
+ item(c,`badges/png/powered-by-easypay-${t}-${lang}.png`,l,`badges/powered-by-easypay-${t}-${lang}.svg`,`badges/png/powered-by-easypay-${t}-${lang}.png`,lang)).join('')}
 document.getElementById('badges').innerHTML=badgeCards('ru')+badgeCards('en');
 
 // colors
-const cols=[['#00897B','Teal',true],['#0B3B45','Teal deep',true],['#4CAF50','Green',true],['#D4AF37','Gold',false],['#1E2A3A','Navy',true],['#1B2B30','Text',true]];
-document.getElementById('colors').innerHTML=cols.map(([hex,nm,light])=>`
- <div class="sw" style="background:${hex};color:${light?'#fff':'#1E2A3A'}" onclick="navigator.clipboard.writeText('${hex}');this.querySelector('small').textContent='copied!'">${nm}<small>${hex}</small></div>`).join('');
+const cols=[['#F8A13A','Amber',false],['#0B3B45','Teal deep',true],['#00897B','Teal',true],['#1E2A3A','Navy',true],['#1B2B30','Ink',true],['#F0EEE6','Beige',false]];
+document.getElementById('colors').innerHTML=cols.map(([hex,nm,light])=>
+ `<div class="sw" style="background:${hex};color:${light?'#fff':'#1B2B30'}" onclick="navigator.clipboard.writeText('${hex}');this.querySelector('small').textContent='copied!'">${nm}<small>${hex}</small></div>`).join('');
 
 // boilerplate
 const copy={
@@ -192,9 +188,8 @@ const copy={
  en:[['One-liner','EasyPay — accept international payments for your online business without your own legal entity.'],
      ['50 words','EasyPay is Anton and Andrey. We run the payment infrastructure for online businesses: accepting payments via Stripe, crypto and rubles, payouts in your preferred currency, chargeback handling and bank correspondence. Partners connect in minutes — by talking to an AI agent in Telegram, with no legal entity or US accounting of their own.']],
 };
-function copyCards(lang){return copy[lang].map(([t,txt])=>`
- <div class="copybox" data-lang="${lang}"><button class="copybtn" onclick="navigator.clipboard.writeText(this.nextElementSibling.nextElementSibling.textContent.trim());this.textContent='✓'">copy</button>
- <h3>${t}</h3><p>${txt}</p></div>`).join('')}
+function copyCards(lang){return copy[lang].map(([t,txt])=>
+ `<div class="copybox" data-lang="${lang}"><button class="copybtn" onclick="navigator.clipboard.writeText(this.nextElementSibling.nextElementSibling.textContent.trim());this.textContent='✓'">copy</button><h3>${t}</h3><p>${txt}</p></div>`).join('')}
 document.getElementById('copy').innerHTML=copyCards('ru')+copyCards('en');
 </script>
 </body>
