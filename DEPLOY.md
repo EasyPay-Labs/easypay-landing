@@ -4,7 +4,7 @@
 
 | Компонент | Тип | Путь | Репозиторий |
 |-----------|-----|------|-------------|
-| easypay-landing | root repo | `/` | github.com/vanger-cat/easypay-landing |
+| easypay-landing | root repo | `/` | github.com/EasyPay-Labs/easypay-landing |
 
 ## Автодеплой (при push в main)
 
