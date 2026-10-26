@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "EasyPay payments — create products, payment links, invoices and request payouts via natural language. Use when the user mentions payment processing, Stripe, Mercury, crypto invoices, T-Bank, СБП, balance, payout, EasyPay, или просит «принять оплату», «создать платёжку», «выставить инвойс», «вывести деньги».",
       "url": "/.well-known/agent-skills/easypay/SKILL.md",
-      "digest": "sha256:f8184f9013853db202c9d80458590ec0e316a3f33ee898d94b2072a085d44826"
+      "digest": "sha256:abfa2fe445db19be0ce402e7656a02f5eb11e11ec4cec9de14f3bf42be5d56f2"
     }
   ]
 }
